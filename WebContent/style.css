@@ -1,0 +1,168 @@
+@charset "UTF-8";
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+	font-size: calc(0.8em + 0.3vw);
+	font-family: 'Roboto', sans-serif;
+	background-color: #dedede;
+	color: #222;
+}
+
+button {
+	padding: 0;
+	border: none;
+	font: inherit;
+	color: inherit;
+	background-color: transparent;
+	cursor: pointer;
+	border: solid 1px #009ACD;
+  	border-radius: 4px;
+  	padding: .2em .4em;
+	color: #009ACD;
+	background-color: #fefefe;
+}
+
+button:active {
+	transform: translateY(1px);
+	filter: saturate(150%);
+	box-shadow: none;
+}
+
+button:hover {
+  border-color: transparent;
+  color: #fefefe;
+  background-color: #009ACD;
+}
+
+header {
+	background-color: #009ACD;
+	color: #fefefe;
+	padding: 1em;
+}
+
+header h1 {
+	display:flex;
+	font-family: 'Ubuntu', sans-serif;
+	letter-spacing: -2px;
+}
+
+header div::first-letter {
+	font-size: 2.5em;
+	line-height: 0.25;
+	letter-spacing: -6px;
+}
+
+main {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#pizza-wrapper {
+	display: grid;
+	grid-gap: 1em;
+	grid-template-columns: repeat(auto-fit, minmax(20em, 1fr) );
+	flex-grow: 1;
+	margin: 1.5em 1em;
+}
+
+.pizza {
+	display: grid;
+	grid-template: auto auto / 1fr auto auto;
+	grid-column-gap: 10px;
+	grid-template-areas:
+		"nombre precio add"
+		"ingredientes precio add";
+	padding: .5em;
+	border-radius: 2px;
+	box-shadow: 0 0 2px rgba(0, 0, 0, .4);
+	background-color: #fefefe;
+	color: #222;
+}
+
+.nombre {
+	grid-area: nombre;
+	font-size: 1.5em;
+	align-self: center;
+	font-weight: 700;
+}
+
+.ingredientes {
+	grid-area: ingredientes;
+	font-size: .8em;
+}
+
+.precio {
+	grid-area: precio;
+	align-self: center;
+	font-size: 1.2em;
+	font-weight: 700;
+}
+
+.add {
+	grid-area: add;
+	align-self: center;
+	font-size: 2em;
+}
+
+.carrito {
+	margin: 1.5em 1em;
+	border: 1px solid #009ACD;
+	background-color: #fefefe;
+	display: none;
+	transform: scale(0);
+  	opacity: 0;
+}
+
+.visible {
+    transform: scale(1);
+    opacity: 1;
+    animation: anim .3s ease-in-out;
+}
+
+@keyframes anim {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.carrito > div:first-child {
+	background-color: #009ACD;
+	color: #fefefe;
+	font-weight: 700;
+	text-align: center;
+	padding: 1em;
+	margin-bottom: 1em;
+}
+
+.carrito > button {
+	display: block;
+	margin: 0 auto;
+}
+
+#lista-carrito {
+	margin: 1em;
+}
+
+#lista-carrito li {
+	list-style-type: none;
+	display: grid;
+	grid-gap: 4px;
+	grid-template-columns: auto 1fr auto;
+}
+
+#lista-carrito li:last-child{
+	margin-top: 1em;
+	font-size: 1.2em;
+}

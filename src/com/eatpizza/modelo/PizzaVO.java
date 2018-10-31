@@ -51,11 +51,11 @@ public class PizzaVO implements Serializable {
 		this.precio = precio;
 	}
 
-	public int getIdIngredientes() {
+	public int getId() {
 		return id;
 	}
 
-	public void setIdIngredientes(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
