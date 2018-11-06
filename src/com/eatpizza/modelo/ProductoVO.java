@@ -6,15 +6,19 @@ public class ProductoVO implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private PizzaVO producto;
-	private int candidad;
+	private int cantidad;
 	
 	public ProductoVO() {
 		
 	}
 	
+	public ProductoVO(PizzaVO producto) {
+		this.producto = producto;
+	}
+	
 	public ProductoVO(PizzaVO producto, int cantidad) {
 		this.producto = producto;
-		this.candidad = cantidad;
+		this.cantidad = cantidad;
 	}
 
 	public PizzaVO getProducto() {
@@ -25,12 +29,12 @@ public class ProductoVO implements Serializable{
 		this.producto = producto;
 	}
 
-	public int getCandidad() {
-		return candidad;
+	public int getCantidad() {
+		return cantidad;
 	}
 
-	public void setCandidad(int candidad) {
-		this.candidad = candidad;
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
 	}
 
 }

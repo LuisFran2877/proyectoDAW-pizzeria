@@ -44,8 +44,8 @@ public class AddProducto extends CarritoAccion {
 			if(index == -1) {
 				productos.add(producto);
 			} else {
-				int cantidad = productos.get(index).getCandidad() + 1;
-				productos.get(index).setCandidad(cantidad);
+				int cantidad = productos.get(index).getCantidad() + 1;
+				productos.get(index).setCantidad(cantidad);
 			}
 			
 		}
@@ -56,9 +56,10 @@ public class AddProducto extends CarritoAccion {
 		
 		for(ProductoVO p : productos) {
 			carritoString.append("<li>");
-			carritoString.append("<span>"+p.getCandidad()+"</span>");
+			carritoString.append("<span>"+p.getCantidad()+"</span>");
 			carritoString.append("<span>"+p.getProducto().getNombre()+"</span>");
-			carritoString.append("<span>" + p.getCandidad() * p.getProducto().getPrecio() +"€</span>");
+			carritoString.append("<span>" + p.getCantidad() * p.getProducto().getPrecio() +"€</span>");
+			carritoString.append("<button id=\"remove"+ p.getProducto().getId() +"\" class=\"remove far fa-minus-square\"></button>");
 			carritoString.append("</li>");
 		}
 		carritoString.append("<li>Total " + total + "€</li>");

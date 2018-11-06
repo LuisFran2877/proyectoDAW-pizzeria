@@ -49,7 +49,7 @@ public abstract class CarritoAccion {
 		double total = 0;
 		
 		for(ProductoVO producto : productos) {
-			total += producto.getCandidad() * producto.getProducto().getPrecio();
+			total += producto.getCantidad() * producto.getProducto().getPrecio();
 		}
 		
 		return total;
@@ -61,7 +61,7 @@ public abstract class CarritoAccion {
 		int total = 0;
 		
 		for(ProductoVO producto : productos) {
-			total += producto.getCandidad();
+			total += producto.getCantidad();
 		}
 		
 		return total;

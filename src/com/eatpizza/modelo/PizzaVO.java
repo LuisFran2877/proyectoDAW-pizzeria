@@ -40,6 +40,10 @@ public class PizzaVO implements Serializable {
 	public PizzaVO() {
 	}
 	
+	public PizzaVO(int id) {
+		this.id = id;
+	}
+	
 	public PizzaVO(String nombre, double precio) {
 		this.nombre = nombre;
 		this.precio = precio;

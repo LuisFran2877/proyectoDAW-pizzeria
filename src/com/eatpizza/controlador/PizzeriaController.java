@@ -17,7 +17,7 @@ import com.eatpizza.util.CarritoAccion;
  */
 @WebServlet(
 		name = "PizzeriaController",
-		urlPatterns = {"/PizzeriaController", "/addToCart"}
+		urlPatterns = {"/PizzeriaController", "/addToCart", "/removeFromCart"}
 		)
 public class PizzeriaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

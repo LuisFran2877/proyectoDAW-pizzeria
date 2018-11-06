@@ -22,11 +22,6 @@ button {
 	color: inherit;
 	background-color: transparent;
 	cursor: pointer;
-	border: solid 1px #009ACD;
-  	border-radius: 4px;
-  	padding: .2em .4em;
-	color: #009ACD;
-	background-color: #fefefe;
 }
 
 button:active {
@@ -109,6 +104,11 @@ main {
 	grid-area: add;
 	align-self: center;
 	font-size: 2em;
+	border: solid 1px #009ACD;
+  	border-radius: 4px;
+  	padding: .2em .4em;
+	color: #009ACD;
+	background-color: #fefefe;
 }
 
 .carrito {
@@ -123,10 +123,16 @@ main {
 .visible {
     transform: scale(1);
     opacity: 1;
-    animation: anim .3s ease-in-out;
+    animation: mostrar .3s ease-in-out;
 }
 
-@keyframes anim {
+.occult {
+	transform: scale(0);
+	opacity: 0;
+	animation: ocultar .3s ease-in-out;	
+}
+
+@keyframes mostrar {
   0% {
     opacity: 0;
     transform: scale(0);
@@ -134,6 +140,17 @@ main {
   100% {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes ocultar {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
   }
 }
 
@@ -159,10 +176,17 @@ main {
 	list-style-type: none;
 	display: grid;
 	grid-gap: 4px;
-	grid-template-columns: auto 1fr auto;
+	grid-template-columns: auto 1fr auto auto;
 }
 
 #lista-carrito li:last-child{
 	margin-top: 1em;
 	font-size: 1.2em;
+}
+
+.remove {
+  	border-radius: 4px;
+  	padding: .1em .2em;
+	color: #009ACD;
+	background-color: #fefefe;
 }
