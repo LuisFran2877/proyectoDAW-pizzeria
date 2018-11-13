@@ -4,9 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,40 +23,49 @@ public class UsuarioVO implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idusuarios")
-	private int idUsuarios;
+	@Column(name = "id")
+	private int id;
 	
 	@Column (name = "email")
 	private String email;
 	
+	@Column (name="password")
+	private String password;
+	
 	@Column (name = "direccion")
 	private String direccion;
 	
-	@Column (name = "roles")
-	private char roles;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "roles_id")
+	private RolVO rol;
 	
 	public UsuarioVO() {
 	}
 	
-	public UsuarioVO(String email, String direccion, char roles) {
+	public UsuarioVO(String email, String password) {
 		this.email = email;
-		this.direccion = direccion;
-		this.roles = roles;
+		this.password = password;
 	}
 	
-	public UsuarioVO(int idUsuarios, String email, String direccion, char roles) {
-		this.idUsuarios = idUsuarios;
+	public UsuarioVO(String email, String password, String direccion) {
 		this.email = email;
+		this.password = password;
 		this.direccion = direccion;
-		this.roles = roles;
+	}
+	
+	public UsuarioVO(int id, String email, String password, String direccion) {
+		this.id = id;
+		this.email = email;
+		this.password = password;
+		this.direccion = direccion;
 	}
 
-	public int getIdUsuarios() {
-		return idUsuarios;
+	public int getId() {
+		return id;
 	}
 
-	public void setIdUsuarios(int idUsuarios) {
-		this.idUsuarios = idUsuarios;
+	public void setId(int idUsuarios) {
+		this.id = idUsuarios;
 	}
 
 	public String getEmail() {
@@ -62,6 +74,14 @@ public class UsuarioVO implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getDireccion() {
@@ -72,13 +92,12 @@ public class UsuarioVO implements Serializable {
 		this.direccion = direccion;
 	}
 
-	public char getRoles() {
-		return roles;
+	public RolVO getRol() {
+		return rol;
 	}
 
-	public void setRoles(char roles) {
-		this.roles = roles;
+	public void setRol(RolVO rol) {
+		this.rol = rol;
 	}
 	
-
 }

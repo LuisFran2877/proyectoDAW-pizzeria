@@ -1,0 +1,156 @@
+@charset "UTF-8";
+
+main {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: start;
+}
+
+#pizza-wrapper {
+	display: grid;
+	grid-gap: 1em;
+	grid-template-columns: repeat(auto-fit, minmax(20em, 1fr) );
+	flex-grow: 1;
+	margin: 1.5em 1em;
+}
+
+.pizza {
+	display: grid;
+	grid-template: auto auto / 1fr auto auto;
+	grid-column-gap: 10px;
+	grid-template-areas:
+		"nombre precio add"
+		"ingredientes precio add";
+	padding: .5em;
+	border-radius: 2px;
+	box-shadow: 0 0 2px rgba(0, 0, 0, .4);
+	background-color: #fefefe;
+	color: #222;
+}
+
+.nombre {
+	grid-area: nombre;
+	font-size: 1.5em;
+	align-self: center;
+	font-weight: 700;
+}
+
+.ingredientes {
+	grid-area: ingredientes;
+	font-size: .8em;
+}
+
+.precio {
+	grid-area: precio;
+	align-self: center;
+	font-size: 1.2em;
+	font-weight: 700;
+}
+
+.add {
+	grid-area: add;
+	align-self: center;
+	font-size: 2em;
+	border: solid 1px #009ACD;
+  	border-radius: 4px;
+  	padding: .2em .4em;
+	color: #009ACD;
+	background-color: #fefefe;
+}
+
+.add:hover {
+    border-color: transparent;
+    color: #fefefe;
+    background-color: #009ACD;
+}
+
+.carrito {
+	margin: 1.5em 1em;
+	border: 1px solid #009ACD;
+	background-color: #fefefe;
+	display: none;
+	transform: scale(0);
+  	opacity: 0;
+}
+
+.visible {
+    transform: scale(1);
+    opacity: 1;
+    animation: mostrar .3s ease-in-out;
+}
+
+.occult {
+	transform: scale(0);
+	opacity: 0;
+	animation: ocultar .3s ease-in-out;	
+}
+
+.carrito > div:first-child {
+	background-color: #009ACD;
+	color: #fefefe;
+	font-weight: 700;
+	text-align: center;
+	padding: 1em;
+	margin-bottom: 1em;
+}
+
+.carrito > button {
+	display: block;
+	margin: 0 auto;
+	border: solid 1px #009ACD;
+  	border-radius: 4px;
+  	padding: .2em .4em;
+	color: #009ACD;
+	background-color: #fefefe;
+}
+
+.carrito > button:hover {
+    border-color: transparent;
+    color: #fefefe;
+    background-color: #009ACD;
+}
+
+#lista-carrito {
+	margin: 1em;
+}
+
+#lista-carrito li {
+	list-style-type: none;
+	display: grid;
+	grid-gap: 4px;
+	grid-template-columns: auto 1fr auto auto;
+}
+
+#lista-carrito li:last-child{
+	margin-top: 1em;
+	font-size: 1.2em;
+}
+
+.remove {
+  	border-radius: 4px;
+  	padding: .1em .2em;
+	color: #009ACD;
+	background-color: #fefefe;
+}
+
+@keyframes mostrar {
+   0% {
+     opacity: 0;
+     transform: scale(0);
+   }
+   100% {
+     opacity: 1;
+     transform: scale(1);
+   }
+ }
+  
+ @keyframes ocultar {
+   0% {
+     opacity: 1;
+     transform: scale(1);
+   }
+   100% {
+     opacity: 0;
+     transform: scale(0);
+   }
+ }

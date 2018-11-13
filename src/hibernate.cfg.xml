@@ -15,5 +15,6 @@
 		<mapping class="com.eatpizza.modelo.IngredienteVO"/>
 		<mapping class="com.eatpizza.modelo.PizzaVO"/>
 		<mapping class="com.eatpizza.modelo.UsuarioVO"/>
+		<mapping class="com.eatpizza.modelo.RolVO"/>
 	</session-factory>
 </hibernate-configuration>

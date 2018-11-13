@@ -6,29 +6,34 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.eatpizza.carrito.AddProducto;
+import com.eatpizza.carrito.RemoveProducto;
+import com.eatpizza.login.AddUser;
+import com.eatpizza.login.Login;
+import com.eatpizza.login.Logout;
 import com.eatpizza.modelo.ProductoVO;
 
-import carrito.AddProducto;
-import carrito.RemoveProducto;
 
-
-public abstract class CarritoAccion {
+public abstract class Accion {
 	
-	public List<ProductoVO> productos;
+	public abstract String ejecutar(HttpServletRequest request, HttpServletResponse response);
 	
-	public CarritoAccion() {
-		this.productos = new ArrayList<ProductoVO>();
-	}
-	
-	public abstract void ejecutar(HttpServletRequest request, HttpServletResponse response);
-	
-	public static CarritoAccion getAccion(String tipo) {
-		CarritoAccion accion = null;
+	public static Accion getAccion(String tipo) {
+		Accion accion = null;
 		if (tipo.equals("addToCart")) {
 			accion = new AddProducto();
 		}
 		if (tipo.equals("removeFromCart")) {
 			accion = new RemoveProducto();
+		}
+		if (tipo.equals("login")) {
+			accion = new Login();
+		}
+		if (tipo.equals("logout")) {
+			accion = new Logout();
+		}
+		if (tipo.equals("addUser")) {
+			accion = new AddUser();
 		}
 		return accion;
 	}

@@ -1,0 +1,93 @@
+@charset "UTF-8";
+
+main {
+    max-width: 35em;
+    margin: 0 auto;
+}
+
+form {
+    display:grid;
+    grid-template-columns: 1fr auto;
+    margin: 1.5em auto;
+    background-color: #fefefe;
+    padding: 1.5em 3.5em 1.5em 2.5em;
+    border-radius: 8px;
+	box-shadow: 0 0 2px rgba(0, 0, 0, .4);
+}
+
+h2,
+label:nth-of-type(1n),
+button {
+    grid-column: auto / span 2;
+}
+
+h2{
+    justify-self: left;
+    font-size: 2em;
+    color: #8e8e8e;
+    border-bottom: 3px solid #8e8e8e;
+    padding-bottom: .2em;
+    margin-bottom: .75em;
+
+}
+
+input {
+    width: 100%;
+    padding: .5em;
+    border: 0;
+    border-bottom: 2px solid #cecece;
+    margin-bottom: 2.5em;
+    transition: all .3s;
+    min-width: 25em;
+}
+
+input:focus {
+    border-bottom: 2px solid #8e8e8e;
+    outline: none;
+}
+
+input:invalid {
+    box-shadow: none;
+}
+
+input + div {
+    position: relative;
+    height: 1em;
+    width: 1em;
+    margin-top: .5em;
+}
+
+input + div:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+}
+
+input:focus:invalid + div:before {
+    content: "\f00d";
+}
+
+input:valid + div:before {
+    content: "\f00c";
+}
+
+form > button {
+    justify-self: right;
+    font-size: 1.2em;
+    font-weight: 700;
+    border: solid 2px #009ACD;
+  	padding: .2em .6em;
+	color: #009ACD;
+    background-color: #fefefe;
+}
+
+form > button:hover {
+    border-color: transparent;
+    color: #fefefe;
+    background-color: #009ACD;
+}
+
+.error {
+	margin-top: -1.75em;
+	color: #ff0000;
+}

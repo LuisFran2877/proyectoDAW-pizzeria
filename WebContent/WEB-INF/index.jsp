@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>EatPizza</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="main.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"> 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
@@ -19,6 +20,12 @@
 			<div>eat</div>
 			<div>pizza</div>
 		</h1>
+		<c:if test="${sessionScope.usuario != null}" > 
+    		<a href="logout">logout</a>
+		</c:if>
+		<c:if test="${sessionScope.usuario == null}" > 
+    		<a href="login.jsp">login</a>
+		</c:if> 
 	</header>
 	<main>
 		<div id="pizza-wrapper">
@@ -47,6 +54,10 @@
 			<div id="lista-carrito"><ul>${sessionScope["carrito"]}</ul></div>
 		</div>
 	</main>
+	<footer>
+        <p>Realizado por Luis Francisco Martínez Vigil &copy;2018</p>
+        <p>EatPizza. Proyecto Desarrollo de Aplicaciones Web</p>
+    </footer>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="index.js"></script>
 </body>

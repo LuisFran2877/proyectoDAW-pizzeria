@@ -1,4 +1,4 @@
-package carrito;
+package com.eatpizza.carrito;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,12 +9,12 @@ import javax.servlet.http.HttpSession;
 
 import com.eatpizza.modelo.PizzaVO;
 import com.eatpizza.modelo.ProductoVO;
-import com.eatpizza.util.CarritoAccion;
+import com.eatpizza.util.Accion;
 
-public class RemoveProducto extends CarritoAccion {
+public class RemoveProducto extends Accion {
 
 	@Override
-	public void ejecutar(HttpServletRequest request, HttpServletResponse response) {
+	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
 		HttpSession session = request.getSession(true);
@@ -46,18 +46,10 @@ public class RemoveProducto extends CarritoAccion {
 			carritoString.append("</li>");
 		}
 		carritoString.append("<li>Total " + total + "€</li>");
-		
-		
-		response.setContentType("text/plain");
-	    response.setCharacterEncoding("UTF-8");
-	    try {
-			response.getWriter().print(carritoString);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	    
 	    session.setAttribute("carrito", carritoString);
+	    
+	    return carritoString.toString();
 	}
 
 }

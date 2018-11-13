@@ -4,8 +4,10 @@ import org.hibernate.SessionFactory;
 
 import com.eatpizza.dao.IngredientesDAO;
 import com.eatpizza.dao.PizzasDAO;
+import com.eatpizza.dao.UsuariosDAO;
 import com.eatpizza.daoImp.IngredientesDAOImp;
 import com.eatpizza.daoImp.PizzasDAOImp;
+import com.eatpizza.daoImp.UsuariosDAOImp;
 
 public class MySqlDAOFactory {
 	
@@ -33,6 +35,10 @@ private SessionFactory sf;
 	
 	public PizzasDAO getPizzasDAO() {
 		return new PizzasDAOImp(sf);
+	}
+	
+	public UsuariosDAO getUsuariosDAO() {
+		return new UsuariosDAOImp(sf);
 	}
 
 }
