@@ -3,9 +3,11 @@ package com.eatpizza.util;
 import org.hibernate.SessionFactory;
 
 import com.eatpizza.dao.IngredientesDAO;
+import com.eatpizza.dao.PedidosDAO;
 import com.eatpizza.dao.PizzasDAO;
 import com.eatpizza.dao.UsuariosDAO;
 import com.eatpizza.daoImp.IngredientesDAOImp;
+import com.eatpizza.daoImp.PedidosDAOImp;
 import com.eatpizza.daoImp.PizzasDAOImp;
 import com.eatpizza.daoImp.UsuariosDAOImp;
 
@@ -39,6 +41,10 @@ private SessionFactory sf;
 	
 	public UsuariosDAO getUsuariosDAO() {
 		return new UsuariosDAOImp(sf);
+	}
+	
+	public PedidosDAO getPedidosDAO() {
+		return new PedidosDAOImp(sf);
 	}
 
 }

@@ -6,5 +6,6 @@ public interface ServiceUsuarios {
 	
 	public UsuarioVO login(String email, String password);
 	public boolean registrarUsuario(UsuarioVO usuario);
+	public UsuarioVO getusuario(String email);
 
 }

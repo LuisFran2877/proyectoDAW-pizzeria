@@ -21,4 +21,24 @@ public class ServicePizzasImp implements ServicePizzas{
 		return p.getPizzas();
 	}
 
+	@Override
+	public void addPizza(PizzaVO pizza) {
+		p.addPizza(pizza);
+	}
+
+	@Override
+	public void updatePizza(PizzaVO pizza) {
+		p.updatePizza(pizza);
+	}
+
+	@Override
+	public void deletePizza(PizzaVO pizza) {
+		p.deletePizza(pizza);
+	}
+
+	@Override
+	public double getPrecio(String nombrePizza) {
+		return p.getPrecio(nombrePizza);
+	}
+
 }

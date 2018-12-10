@@ -1,35 +1,62 @@
 @charset "UTF-8";
 
-main {
-    max-width: 35em;
-    margin: 0 auto;
-}
-
-form {
-    display:grid;
-    grid-template-columns: 1fr auto;
-    margin: 1.5em auto;
-    background-color: #fefefe;
-    padding: 1.5em 3.5em 1.5em 2.5em;
-    border-radius: 8px;
-	box-shadow: 0 0 2px rgba(0, 0, 0, .4);
-}
-
-h2,
-label:nth-of-type(1n),
-button,
-p {
-    grid-column: auto / span 2;
-}
-
-h2{
-    justify-self: left;
+h2 {
     font-size: 2em;
     color: #8e8e8e;
     border-bottom: 3px solid #8e8e8e;
     padding-bottom: .2em;
     margin-bottom: .75em;
+}
 
+main {
+    max-width: 35em;
+    margin: 0 auto;
+}
+
+#contenedor {
+	margin: 1.5em 0;
+	padding: 1.5em 3.5em 1.5em 2.5em;
+    border-radius: 8px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .4);
+    background-color: #fefefe;
+}
+
+#contenedor + p {
+	margin: 1.5em;
+}
+
+#contenedor + p > a {
+	color: #009ACD;
+}
+
+#factura {
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: .5em 1em;
+    justify-items: center;
+    margin-bottom: 1.5em;
+}
+
+#factura span:nth-child(-n+3) {
+	font-weight: 700;
+	color: #009ACD;
+}
+
+#factura span:last-child {
+	grid-column: auto / span 3;
+	justify-self: right;
+	font-size: 1.2em;
+	font-weight: 700;
+}
+
+#contacto {
+    display:grid;
+    grid-template-columns: 1fr auto;
+}
+
+label:nth-of-type(1n),
+button {
+    grid-column: auto / span 2;
 }
 
 input {
@@ -86,17 +113,4 @@ form > button:hover {
     border-color: transparent;
     color: #fefefe;
     background-color: #009ACD;
-}
-
-.error {
-	margin-top: -1.75em;
-	color: #ff0000;
-}
-
-form + p {
-	margin: 1.5em auto;
-}
-
-form + p > a {
-	color: #009ACD;
 }

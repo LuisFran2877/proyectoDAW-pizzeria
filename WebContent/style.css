@@ -40,6 +40,27 @@ button:active {
 	box-shadow: none;
 }
 
+a {
+	font-weight: 700;
+	text-decoration: none;
+	position: relative;
+}
+
+a:after {
+  content: '';
+  display: block;
+  border-bottom: 3px solid currentColor;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  transition: .3s ease;
+}
+
+a:hover:after { 
+  width: 0; 
+}
+
 header {
 	background-color: #009ACD;
 	color: #fefefe;
@@ -62,7 +83,8 @@ header div::first-letter {
 
 header a {
 	color: #fefefe;
-	font-weight: 700;
+	align-self: start;
+	margin-right: .5em;
 }
 
 header a:hover {

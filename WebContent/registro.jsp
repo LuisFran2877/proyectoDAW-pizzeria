@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>EatPizza</title>
+    <title>Registro de nuevo usuario - EatPizza</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="form.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet"> 
@@ -20,6 +20,15 @@
 			<div>eat</div>
 			<div>pizza</div>
 		</h1>
+		<c:if test="${sessionScope.usuario.getRol().getRol().equals(\"ADMIN\") }">
+			<a href="admin.jsp">admin</a>
+		</c:if>
+		<c:if test="${sessionScope.usuario != null}" > 
+    		<a href="logout">logout</a>
+		</c:if>
+		<c:if test="${sessionScope.usuario == null}" > 
+    		<a href="login.jsp">login</a>
+		</c:if> 
 	</header>
 	<main>
         <form method="POST" action="addUser">
@@ -47,7 +56,6 @@
         <p>Realizado por Luis Francisco Martínez Vigil &copy;2018</p>
         <p>EatPizza. Proyecto Desarrollo de Aplicaciones Web</p>
     </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="registro.js"></script>
+	<script src="disable-back.js"></script>
 </body>
 </html>

@@ -34,4 +34,9 @@ public class ServiceUsuariosImp implements ServiceUsuarios {
 		
 	}
 
+	@Override
+	public UsuarioVO getusuario(String email) {
+		return u.getusuario(email);
+	}
+
 }

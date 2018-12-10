@@ -1,12 +1,16 @@
 package com.eatpizza.util;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.eatpizza.carrito.AddPizza;
 import com.eatpizza.carrito.AddProducto;
+import com.eatpizza.carrito.CrearFactura;
+import com.eatpizza.carrito.CrearPedido;
+import com.eatpizza.carrito.EditDeletePizza;
+import com.eatpizza.carrito.ObtenerPrecio;
 import com.eatpizza.carrito.RemoveProducto;
 import com.eatpizza.login.AddUser;
 import com.eatpizza.login.Login;
@@ -34,6 +38,21 @@ public abstract class Accion {
 		}
 		if (tipo.equals("addUser")) {
 			accion = new AddUser();
+		}
+		if (tipo.equals("factura")) {
+			accion = new CrearFactura();
+		}
+		if (tipo.equals("pedido")) {
+			accion = new CrearPedido();
+		}
+		if (tipo.equals("obtenerPrecio")) {
+			accion = new ObtenerPrecio();
+		}
+		if (tipo.equals("editDelete")) {
+			accion = new EditDeletePizza();
+		}
+		if (tipo.equals("addPizza")) {
+			accion = new AddPizza();
 		}
 		return accion;
 	}

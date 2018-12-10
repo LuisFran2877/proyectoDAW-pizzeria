@@ -6,11 +6,15 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -34,7 +38,20 @@ public class PizzaVO implements Serializable {
 	@Column (name = "precio")
 	private double precio;
 	
-	@ManyToMany(mappedBy = "pizzas", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY, cascade =
+        {
+                CascadeType.DETACH,
+                CascadeType.MERGE,
+                CascadeType.REFRESH,
+                CascadeType.PERSIST
+        })
+	@JoinTable(
+			name="recetas", 
+			joinColumns={@JoinColumn(name="pizzas_id")}, 
+			inverseJoinColumns={@JoinColumn(name="ingredientes_id")},
+			foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
+			inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
+	)
 	private Set<IngredienteVO> ingredientes = new HashSet<IngredienteVO>();
 	
 	public PizzaVO() {
@@ -42,6 +59,11 @@ public class PizzaVO implements Serializable {
 	
 	public PizzaVO(int id) {
 		this.id = id;
+	}
+	
+	public PizzaVO(int id, double precio) {
+		this.id = id;
+		this.precio = precio;
 	}
 	
 	public PizzaVO(String nombre, double precio) {
@@ -53,6 +75,12 @@ public class PizzaVO implements Serializable {
 		this.id = id;
 		this.nombre = nombre;
 		this.precio = precio;
+	}
+	
+	public PizzaVO(String nombre, double precio, Set<IngredienteVO> ingredientes) {
+		this.nombre = nombre;
+		this.precio = precio;
+		this.ingredientes = ingredientes;
 	}
 
 	public int getId() {

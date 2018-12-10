@@ -14,6 +14,10 @@ import com.eatpizza.util.Accion;
 public class RemoveProducto extends Accion {
 
 	@Override
+	/**
+	 * Sobreescribe el método ejecutar de la clase Accion para ejecutar
+	 * la acción eliminar producto del carrito
+	 */
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		

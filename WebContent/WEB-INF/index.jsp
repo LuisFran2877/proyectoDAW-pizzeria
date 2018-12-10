@@ -20,6 +20,9 @@
 			<div>eat</div>
 			<div>pizza</div>
 		</h1>
+		<c:if test="${sessionScope.usuario.getRol().getRol().equals(\"ADMIN\") }">
+			<a href="admin.jsp">admin</a>
+		</c:if>
 		<c:if test="${sessionScope.usuario != null}" > 
     		<a href="logout">logout</a>
 		</c:if>
@@ -48,11 +51,11 @@
 			</div>
 			</c:forEach>
 		</div>
-		<div class="carrito">
+		<form class="carrito" action="factura">
 			<div>Tu compra</div>
-			<button>Comprar</button>
-			<div id="lista-carrito"><ul>${sessionScope["carrito"]}</ul></div>
-		</div>
+			<button type ="submit">Comprar</button>
+			<div id="lista-carrito"><ul>${sessionScope.carrito}</ul></div>
+		</form>
 	</main>
 	<footer>
         <p>Realizado por Luis Francisco Martínez Vigil &copy;2018</p>
@@ -60,5 +63,6 @@
     </footer>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="index.js"></script>
+	<script src="disable-back.js"></script>
 </body>
 </html>

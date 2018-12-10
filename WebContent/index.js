@@ -39,8 +39,9 @@ function addProducto() {
 	
 }
 
-function removeProducto() {
+function removeProducto(e) {
 	
+	 e.preventDefault();
 	//obtengo el id del botón pulsado
 	var id = $(this).attr("id");
 	//Elimino el texto de la id y obtendo un número que coincide

@@ -6,8 +6,10 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,15 +35,27 @@ public class IngredienteVO implements Serializable {
 	@Column (name = "nombre")
 	private String nombre;
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY, cascade =
+        {
+                CascadeType.DETACH,
+                CascadeType.MERGE,
+                CascadeType.REFRESH,
+                CascadeType.PERSIST
+        })
 	@JoinTable(
 			name="recetas", 
 			joinColumns={@JoinColumn(name="ingredientes_id")}, 
-			inverseJoinColumns={@JoinColumn(name="pizzas_id")}
+			inverseJoinColumns={@JoinColumn(name="pizzas_id")},
+			foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
+			inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
 	)
 	private Set<PizzaVO> pizzas = new HashSet<PizzaVO>();
 	
 	public IngredienteVO() {	
+	}
+	
+	public IngredienteVO(int id) {
+		this.id = id;
 	}
 	
 	public IngredienteVO(String nombre) {
@@ -53,11 +67,11 @@ public class IngredienteVO implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public int getIdIngredientes() {
+	public int getId() {
 		return id;
 	}
 
-	public void setIdIngredientes(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

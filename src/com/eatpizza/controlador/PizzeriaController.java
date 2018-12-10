@@ -18,7 +18,9 @@ import com.eatpizza.util.Accion;
  */
 @WebServlet(
 		name = "PizzeriaController",
-		urlPatterns = {"/PizzeriaController", "/addToCart", "/removeFromCart", "/login", "/logout", "/addUser"}
+		urlPatterns = {"/PizzeriaController", "/addToCart", "/removeFromCart", 
+				"/login", "/logout", "/addUser", "/factura", "/pedido", 
+				"/obtenerPrecio", "/editDelete", "/addPizza"}
 		)
 public class PizzeriaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -45,28 +47,33 @@ public class PizzeriaController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
 		String url = request.getServletPath();
 		String separadorSlash = Pattern.quote("/");
 		String [] partesUrl = url.split(separadorSlash);
 		url = partesUrl[1];
 		Accion accion = Accion.getAccion(url);
 		
-		if(url.equals("addToCart") || url.equals("removeFromCart")) {
-			String carrito = accion.ejecutar(request, response);
+		//Se genera una respuesta para la peticiones realizadas desde AJAX
+		if(url.equals("addToCart") || url.equals("removeFromCart") || 
+				url.equals("obtenerPrecio")) {
+			String respuesta = accion.ejecutar(request, response);
 			response.setContentType("text/plain");
 		    response.setCharacterEncoding("UTF-8");
 		    try {
-				response.getWriter().print(carrito);
+				response.getWriter().print(respuesta);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		else if (url.equals("login") || url.equals("logout") || url.equals("addUser")) {
-			//RequestDispatcher despachador = request.getRequestDispatcher(accion.ejecutar(request, response));
-			//despachador.forward(request, response);
+		//Se genera una respuesta para la peticiones que necesitan una redirección
+		else if (url.equals("login") || url.equals("logout") || 
+				url.equals("addUser") || url.equals("factura") || 
+				url.equals("pedido") || url.equals("editDelete") || 
+				url.equals("addPizza")) {
+			
 			response.sendRedirect(request.getContextPath() + accion.ejecutar(request, response));
+		
 		}
 			
 	}

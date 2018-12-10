@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -33,6 +34,10 @@ public class UsuariosDAOImp implements UsuariosDAO {
 			q.setParameter("email", email);
 			q.setParameter("password", password);
 			usuarios = q.getResultList();
+			for(UsuarioVO usuario : usuarios) {
+				Hibernate.initialize(usuario.getRol());
+			}
+			sesion.getTransaction().commit();
 			sesion.close();
 		} catch (HibernateException e) {
 			e.printStackTrace();
@@ -57,6 +62,10 @@ public class UsuariosDAOImp implements UsuariosDAO {
 			Query q = sesion.createQuery("select u from UsuarioVO u where u.email=:email");
 			q.setParameter("email", email);
 			usuarios = q.getResultList();
+			for(UsuarioVO usuario : usuarios) {
+				Hibernate.initialize(usuario.getRol());
+			}
+			sesion.getTransaction().commit();
 			sesion.close();
 		} catch (HibernateException e) {
 			e.printStackTrace();
@@ -79,6 +88,7 @@ public class UsuariosDAOImp implements UsuariosDAO {
 			sesion.beginTransaction();
 			sesion.save(usuario);
 			sesion.getTransaction().commit();
+			sesion.close();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 			sesion.getTransaction().rollback();
