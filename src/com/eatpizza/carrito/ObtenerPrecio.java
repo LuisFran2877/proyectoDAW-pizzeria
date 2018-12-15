@@ -10,6 +10,11 @@ import com.eatpizza.util.Accion;
 public class ObtenerPrecio extends Accion {
 
 	@Override
+	/**
+	 * Sobreescribe el método ejecutar de la clase Accion para ejecutar
+	 * la acción obtener precio de una pizza.
+	 * Devuelve un String que será devuelto por PizzeriaController
+	 */
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 		
 		String nombrePizza = request.getParameter("nombrePizza");

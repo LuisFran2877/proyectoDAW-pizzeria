@@ -35,14 +35,26 @@ private SessionFactory sf;
 		return new IngredientesDAOImp(sf);
 	}
 	
+	/**
+	 * Obtiene PizzasDAO
+	 * @return PizzasDAO implementado con una Session Factory
+	 */
 	public PizzasDAO getPizzasDAO() {
 		return new PizzasDAOImp(sf);
 	}
 	
+	/**
+	 * Obtiene UsuariosDAO
+	 * @return UsuariosDAO implementado con una Session Factory
+	 */
 	public UsuariosDAO getUsuariosDAO() {
 		return new UsuariosDAOImp(sf);
 	}
 	
+	/**
+	 * Obtiene PedidosDAO
+	 * @return PedidosDAO implementado con una Session Factory
+	 */
 	public PedidosDAO getPedidosDAO() {
 		return new PedidosDAOImp(sf);
 	}

@@ -3,9 +3,9 @@
 *,
 *:before,
 *:after {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
 }
 
 html {
@@ -30,8 +30,8 @@ button {
 	font: inherit;
 	color: inherit;
 	background-color: transparent;
-    cursor: pointer;
-    transition: all .3s;
+    	cursor: pointer;
+    	transition: all .3s;
 }
 
 button:active {
@@ -40,25 +40,25 @@ button:active {
 	box-shadow: none;
 }
 
-a {
+.enlace {
 	font-weight: 700;
 	text-decoration: none;
 	position: relative;
 }
 
-a:after {
-  content: '';
-  display: block;
-  border-bottom: 3px solid currentColor;
-  width: 100%;
-  position: absolute;
-  left: 0;
-  bottom: -3px;
-  transition: .3s ease;
+.enlace:after {
+  	content: '';
+  	display: block;
+  	border-bottom: 3px solid currentColor;
+  	width: 100%;
+  	position: absolute;
+  	left: 0;
+  	bottom: -3px;
+  	transition: .3s ease;
 }
 
-a:hover:after { 
-  width: 0; 
+.enlace:hover:after { 
+  	width: 0; 
 }
 
 header {
@@ -69,10 +69,7 @@ header {
 }
 
 header h1 {
-	display:flex;
 	flex-grow: 1;
-	font-family: 'Ubuntu', sans-serif;
-	letter-spacing: -2px;
 }
 
 header div::first-letter {
@@ -89,6 +86,10 @@ header a {
 
 header a:hover {
 	text-decoration: none;
+}
+
+header svg {
+	width: 8em;
 }
 
 footer {

@@ -17,22 +17,32 @@
 <body>
 	<header>
 		<h1>
-			<div>eat</div>
-			<div>pizza</div>
+			<a href="index.jsp">
+			<svg aria-labelledby="title1 desc1" role="img" version="1.1" font-weight="700" viewBox="0 0 90 34">
+				<text font-family="Ubuntu" font-size="40" x="0" fill="#fefefe" y="24">e</text>
+				<text font-family="Ubuntu" font-size="20" fill="#fefefe" y="24" textLength="18" x="20">at</text>
+				<text font-family="Ubuntu" font-size="40" fill="#fefefe" y="24" x="35">p</text>
+				<text font-family="Ubuntu" font-size="20" fill="#fefefe" y="24" textLength="32" x="57">izza</text>
+			</svg>
+			</a>
 		</h1>
 		<c:if test="${sessionScope.usuario.getRol().getRol().equals(\"ADMIN\") }">
-			<a href="admin.jsp">admin</a>
+			<a class="enlace" href="admin.jsp">admin</a>
 		</c:if>
 		<c:if test="${sessionScope.usuario != null}" > 
-    		<a href="logout">logout</a>
+    			<a class="enlace" href="logout">logout</a>
 		</c:if>
 		<c:if test="${sessionScope.usuario == null}" > 
-    		<a href="login.jsp">login</a>
+    			<a class="enlace" href="login.jsp">login</a>
 		</c:if> 
 	</header>
 	<main>
         <form method="POST" action="addUser">
             <h2>Regístrate</h2>
+            <c:if test="${sessionScope.registerError != null}">
+   				<p class="error">${sessionScope.registerError}</p>
+   				<c:remove var="registerError" scope="session" />
+			</c:if>
             <label for="email">Email</label>
             <input type="email" name="email" id="email" required placeholder="Sólo lo usaremos para confimar que eres tú">
             <div></div>
@@ -45,10 +55,6 @@
             <label for="direccion">Dirección</label>
             <input type="text" name="direccion" id="direccion" required placeholder="¿A dónde quieres que te enviemos el pedido?">
             <div></div>
-            <c:if test="${sessionScope.registerError != null}">
-   				<p class="error">${sessionScope.registerError}</p>
-   				<c:remove var="registerError" scope="session" />
-			</c:if>
             <button type="submit">Registrarme</button>
         </form>
     </main>
@@ -56,6 +62,8 @@
         <p>Realizado por Luis Francisco Martínez Vigil &copy;2018</p>
         <p>EatPizza. Proyecto Desarrollo de Aplicaciones Web</p>
     </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="registro.js"></script>
 	<script src="disable-back.js"></script>
 </body>
 </html>

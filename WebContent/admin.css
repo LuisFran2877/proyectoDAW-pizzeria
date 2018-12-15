@@ -5,7 +5,7 @@ h2{
     color: #8e8e8e;
     border-bottom: 3px solid #8e8e8e;
     padding-bottom: .2em;
-    margin: 1.5em 0 .75em 0;
+    margin: 1.5em 0;
 
 }
 
@@ -16,6 +16,11 @@ h2:first-child {
 main {
     min-width: 35em;
     margin: 0 auto;
+}
+
+.error {
+	margin: -2.5em 0 .5em 0;
+	color: #ff0000;
 }
 
 #admin-container {

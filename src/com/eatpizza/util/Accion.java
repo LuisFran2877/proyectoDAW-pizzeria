@@ -17,11 +17,22 @@ import com.eatpizza.login.Login;
 import com.eatpizza.login.Logout;
 import com.eatpizza.modelo.ProductoVO;
 
-
+/**
+ * 
+ * Clase abstracta que se encarga de montar la acción que se ha de ejecutar.
+ * @author Luis Francisco Martínez Vigil
+ *
+ */
 public abstract class Accion {
 	
 	public abstract String ejecutar(HttpServletRequest request, HttpServletResponse response);
 	
+	/**
+	 * Método encargado de montar un objeto que extiende a la clase Accion
+	 * @param tipo String que recibe de PizzeriaController y especifica el objeto a montar
+	 * @return Un objeto que extiente la clase Accion
+	 */
+
 	public static Accion getAccion(String tipo) {
 		Accion accion = null;
 		if (tipo.equals("addToCart")) {

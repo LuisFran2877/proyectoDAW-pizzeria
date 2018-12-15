@@ -6,9 +6,9 @@
 	<session-factory>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/pizzeria</property>
+		<property name="hibernate.connection.url">jdbc:mysql://node24687-eatpizza.jelastic.cloudhosted.es/pizzeria</property>
 		<property name="hibernate.connection.username">root</property>
-		<property name="hibernate.connection.password">temporal</property>
+		<property name="hibernate.connection.password">IFRbma73516</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="hibernate.current_session_context_class">thread</property>
 		<property name="hibernate.show_sql">true</property>

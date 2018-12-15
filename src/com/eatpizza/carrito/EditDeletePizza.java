@@ -11,6 +11,11 @@ import com.eatpizza.util.Accion;
 public class EditDeletePizza extends Accion{
 
 	@Override
+	/**
+	 * Sobreescribe el método ejecutar de la clase Accion para ejecutar
+	 * la acción actualizar o borrar pizza.
+	 * Devuelve un String con la vista a montar por PizzeriaController
+	 */
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 		
 		PizzaVO pizza;

@@ -89,7 +89,7 @@ form > button:hover {
 }
 
 .error {
-	margin-top: -1.75em;
+	margin: -1em 0 .5em 0;
 	color: #ff0000;
 }
 

@@ -17,22 +17,32 @@
 <body>
 	<header>
 		<h1>
-			<div>eat</div>
-			<div>pizza</div>
+			<a href="index.jsp">
+			<svg aria-labelledby="title1 desc1" role="img" version="1.1" font-weight="700" viewBox="0 0 90 34">
+				<text font-family="Ubuntu" font-size="40" x="0" fill="#fefefe" y="24">e</text>
+				<text font-family="Ubuntu" font-size="20" fill="#fefefe" y="24" textLength="18" x="20">at</text>
+				<text font-family="Ubuntu" font-size="40" fill="#fefefe" y="24" x="35">p</text>
+				<text font-family="Ubuntu" font-size="20" fill="#fefefe" y="24" textLength="32" x="57">izza</text>
+			</svg>
+			</a>
 		</h1>
 		<c:if test="${sessionScope.usuario.getRol().getRol().equals(\"ADMIN\") }">
-			<a href="admin.jsp">admin</a>
+			<a class="enlace" href="admin.jsp">admin</a>
 		</c:if>
 		<c:if test="${sessionScope.usuario != null}" > 
-    		<a href="logout">logout</a>
+    			<a class="enlace" href="logout">logout</a>
 		</c:if>
 		<c:if test="${sessionScope.usuario == null}" > 
-    		<a href="login.jsp">login</a>
+    			<a class="enlace" href="login.jsp">login</a>
 		</c:if> 
 	</header>
 	<main>
 		<div id="admin-container">
 			<h2>Añadir</h2>
+			<c:if test="${sessionScope.addPizzaError != null}">
+  					<p class="error">${sessionScope.addPizzaError}</p>
+  					<c:remove var="addPizzaError" scope="session" />
+			</c:if>
 	        <form method="POST" id="#add" action="addPizza">
 	        	<div id="data-container">
 		        	<label for="nombre">Nombre</label>
@@ -45,7 +55,12 @@
 	            <fieldset>
 	            	<legend>Ingredientes:</legend>
 	            	<c:forEach items="${ingredientes}" var="ingrediente">
-	            		<label><input type="checkbox" name="ingrediente" value="${ingrediente.getId()}">${ingrediente.getNombre()}</label>
+	            		<c:if test="${ingrediente.getId() == 1 }">
+	            			<label><input type="checkbox" name="ingrediente" value="${ingrediente.getId()}" required checked>${ingrediente.getNombre()}</label>
+						</c:if>
+						<c:if test="${ingrediente.getId() != 1 }">
+	            			<label><input type="checkbox" name="ingrediente" value="${ingrediente.getId()}">${ingrediente.getNombre()}</label>
+						</c:if>
 	            	</c:forEach>
 	            </fieldset>
 	            <button type="submit">Añadir</button>

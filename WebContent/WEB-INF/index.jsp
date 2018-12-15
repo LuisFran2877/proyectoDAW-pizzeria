@@ -17,17 +17,23 @@
 <body>
 	<header>
 		<h1>
-			<div>eat</div>
-			<div>pizza</div>
+			<a href="index.jsp">
+			<svg aria-labelledby="title1 desc1" role="img" version="1.1" font-weight="700" viewBox="0 0 90 34">
+				<text font-family="Ubuntu" font-size="40" x="0" fill="#fefefe" y="24">e</text>
+				<text font-family="Ubuntu" font-size="20" fill="#fefefe" y="24" textLength="18" x="20">at</text>
+				<text font-family="Ubuntu" font-size="40" fill="#fefefe" y="24" x="35">p</text>
+				<text font-family="Ubuntu" font-size="20" fill="#fefefe" y="24" textLength="32" x="57">izza</text>
+			</svg>
+			</a>
 		</h1>
 		<c:if test="${sessionScope.usuario.getRol().getRol().equals(\"ADMIN\") }">
-			<a href="admin.jsp">admin</a>
+			<a class="enlace" href="admin.jsp">admin</a>
 		</c:if>
 		<c:if test="${sessionScope.usuario != null}" > 
-    		<a href="logout">logout</a>
+    			<a class="enlace" href="logout">logout</a>
 		</c:if>
 		<c:if test="${sessionScope.usuario == null}" > 
-    		<a href="login.jsp">login</a>
+    			<a class="enlace" href="login.jsp">login</a>
 		</c:if> 
 	</header>
 	<main>
@@ -54,7 +60,7 @@
 		<form class="carrito" action="factura">
 			<div>Tu compra</div>
 			<button type ="submit">Comprar</button>
-			<div id="lista-carrito"><ul>${sessionScope.carrito}</ul></div>
+			<div id="lista-carrito">${sessionScope.carrito}</div>
 		</form>
 	</main>
 	<footer>

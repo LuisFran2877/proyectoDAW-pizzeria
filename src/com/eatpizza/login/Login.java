@@ -12,6 +12,11 @@ import com.eatpizza.util.Accion;
 public class Login extends Accion {
 
 	@Override
+	/**
+	 * Sobreescribe el método ejecutar de la clase Accion para ejecutar
+	 * la acción login.
+	 * Devuelve un String con la vista/s a montar por PizzeriaController
+	 */
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		

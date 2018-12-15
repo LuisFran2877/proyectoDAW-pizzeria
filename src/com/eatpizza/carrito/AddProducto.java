@@ -1,6 +1,5 @@
 package com.eatpizza.carrito;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +16,8 @@ public class AddProducto extends Accion {
 	@Override
 	/**
 	 * Sobreescribe el método ejecutar de la clase Accion para ejecutar
-	 * la acción añadir producto al carrito
+	 * la acción añadir producto al carrito.
+	 * Devuelve un String que será devuelto por PizzeriaController
 	 */
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
@@ -59,14 +59,12 @@ public class AddProducto extends Accion {
 		StringBuilder carritoString = new StringBuilder();
 		
 		for(ProductoVO p : productos) {
-			carritoString.append("<li>");
 			carritoString.append("<span>"+p.getCantidad()+"</span>");
 			carritoString.append("<span>"+p.getProducto().getNombre()+"</span>");
 			carritoString.append("<span>" + p.getCantidad() * p.getProducto().getPrecio() +"€</span>");
 			carritoString.append("<button id=\"remove"+ p.getProducto().getId() +"\" class=\"remove far fa-minus-square\"></button>");
-			carritoString.append("</li>");
 		}
-		carritoString.append("<li>Total " + total + "€</li>");
+		carritoString.append("<span>Total " + total + "€</span>");
 		
 		session.setAttribute("carrito", carritoString);
 		

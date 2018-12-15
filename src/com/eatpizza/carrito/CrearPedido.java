@@ -17,6 +17,11 @@ import com.eatpizza.util.Accion;
 public class CrearPedido extends Accion {
 
 	@Override
+	/**
+	 * Sobreescribe el método ejecutar de la clase Accion para ejecutar
+	 * la acción crear pedido.
+	 * Devuelve un String con la vista a montar por PizzeriaController
+	 */
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		

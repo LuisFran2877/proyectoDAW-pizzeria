@@ -22,8 +22,16 @@ public class ServicePizzasImp implements ServicePizzas{
 	}
 
 	@Override
-	public void addPizza(PizzaVO pizza) {
-		p.addPizza(pizza);
+	public boolean addPizza(PizzaVO pizza) {
+		
+		PizzaVO existePizza = p.getPizza(pizza.getNombre());
+		if(existePizza != null) {
+			return false;
+		} else {
+			p.addPizza(pizza);
+		}
+		return true;
+		
 	}
 
 	@Override

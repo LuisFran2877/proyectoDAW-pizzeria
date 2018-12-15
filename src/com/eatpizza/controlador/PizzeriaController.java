@@ -44,6 +44,10 @@ public class PizzeriaController extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * Obtiene de ServletPath un String que monta en un objeto de tipo Accion que será
+	 * el encargado de montar la acción a realizar.
+	 * Posteriormente el objeto que realiza la acción devuelve a este objeto PizzeriaController
+	 * la vista que ha de montar y PizzeriaController la ejecuta.
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
